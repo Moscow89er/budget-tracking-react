@@ -1,0 +1,16 @@
+@import url(./blocks/page/page.css);
+@import url(./blocks/header/header.css);
+@import url(./blocks/header/header__title.css);
+@import url(./blocks/daily-records/daily-records.css);
+@import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-button.css);
+@import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-input.css);
+@import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-inputs.css);
+@import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-label.css);
+@import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-select.css);
+@import url(./blocks/daily-records/___balance-controls/daily__records__balance-controls-title.css);
+@import url(./blocks/daily-records/__balance/daily-records__balance.css);
+@import url(./blocks/daily-records/__balance/daily__records__balance-title.css);
+@import url(./blocks/daily-records/__balance/daily__records__balance-value.css);
+@import url(./blocks/daily-records/__title/daily-records__title.css);
+@import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls.css);
+@import url(./blocks/daily-records/__balance/daily-records__balance-container.css);

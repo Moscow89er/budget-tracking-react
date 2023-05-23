@@ -1,0 +1,14 @@
+.header__title {
+    margin: auto;
+    max-width: 500px;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+}
+@media (max-width: 696px) {
+    .header__title {
+        max-width: 192px;
+        font-size: 27px;
+        line-height: 32px;
+    }
+}

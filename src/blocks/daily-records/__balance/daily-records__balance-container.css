@@ -1,0 +1,9 @@
+.daily-records__balance-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #E6E6FA;
+    border-radius: 5px;
+    padding: 20px;
+    max-height: 320px;
+}
