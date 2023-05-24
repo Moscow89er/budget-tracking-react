@@ -5,7 +5,6 @@
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-button.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-input.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-inputs.css);
-@import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-label.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-select.css);
 @import url(./blocks/daily-records/___balance-controls/daily__records__balance-controls-title.css);
 @import url(./blocks/daily-records/__balance/daily-records__balance.css);
@@ -14,3 +13,18 @@
 @import url(./blocks/daily-records/__title/daily-records__title.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls.css);
 @import url(./blocks/daily-records/__balance/daily-records__balance-container.css);
+@import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-label.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__button.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__currency-foreign.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__currency-local.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__input-category.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__input-date.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__input-foreign.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__input-local.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__input-location.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__title.css);
+@import url(./blocks/transactions/__add-form/transactions__add-form__container.css);
+@import url(./blocks/transactions/__container/transactions__container.css);
+@import url(./blocks/transactions/__title/transactions__title.css);
+@import url(./blocks/transactions/transactions.css);

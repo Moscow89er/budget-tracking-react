@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 function DailyRecords() {
     const [inputValue, setInputValue] = useState('');
-    const [selectedCurrency, setSelectedCurrncy] = useState('');
+    const [selectedCurrency, setSelectedCurency] = useState('');
     const [rub, setRub] = useState(0);
     const [usd, setUsd] = useState(0);
     const [gel, setGel] = useState(0);
@@ -12,7 +12,7 @@ function DailyRecords() {
     };
 
     const handleCurrencyChange = (e) => {
-        setSelectedCurrncy(e.target.value);
+        setSelectedCurency(e.target.value);
     }
 
     const handleIncrement = () => {
@@ -33,6 +33,7 @@ function DailyRecords() {
                     break;
             }
             setInputValue('');
+            setSelectedCurency('');
         }
     };
 
@@ -54,6 +55,7 @@ function DailyRecords() {
                     break;
             }
             setInputValue('');
+            setSelectedCurency('');
         }
     };
 
