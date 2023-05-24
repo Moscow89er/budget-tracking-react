@@ -1,3 +1,5 @@
 .daily-records__balance-controls-inputs {
-
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
