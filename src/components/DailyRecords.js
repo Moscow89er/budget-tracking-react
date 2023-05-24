@@ -1,4 +1,7 @@
-import React, {useState} from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { Chart, LinearScale, BarController, CategoryScale, BarElement } from "chart.js";
+
+Chart.register(LinearScale, BarController, CategoryScale, BarElement);
 
 function DailyRecords() {
     const [inputValue, setInputValue] = useState('');
@@ -6,6 +9,53 @@ function DailyRecords() {
     const [rub, setRub] = useState(0);
     const [usd, setUsd] = useState(0);
     const [gel, setGel] = useState(0);
+    const chartRef = useRef(null);
+    const myChartRef = useRef(null);
+
+    useEffect(() => {
+        const chartCanvasContext = chartRef.current.getContext('2d');
+
+        if (myChartRef.current) {
+            myChartRef.current.destroy();
+        }
+
+        myChartRef.current = new Chart(chartCanvasContext, {
+            type: 'bar',
+            data: {
+              labels: ['RUB', 'USD', 'GEL'],
+              datasets: [
+                {
+                  label: 'Баланс',
+                  data: [rub, usd, gel],
+                  backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                  ],
+                  borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: {
+                  beginAtZero: true,
+                },
+              },
+            },
+          });
+          
+        return () => {
+            myChartRef.current.destroy();
+        };
+    }, [rub, usd, gel]);
+
 
     const handleInputChange = (e) => {
         setInputValue(e.target.value);
@@ -75,6 +125,14 @@ function DailyRecords() {
                         <span id="daily-balance-value-GEL">GEL: {gel}</span>
                     </div>
                 </div>
+                <canvas className="daily-records__canvas" ref={chartRef} 
+                    style={{
+                        width: "300px",
+                        height: "300px",
+                        margin: "0 auto",
+                        display: "block"
+                    }}
+                />
                 <div className="daily-records__balance-controls">
                     <h2 className="daily-records__balance-controls-title">Управление балансом</h2>
                     <div className="daily-records__balance-controls-inputs" id="balance-inputs">

@@ -2,6 +2,7 @@
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/header__title.css);
 @import url(./blocks/daily-records/daily-records.css);
+/*@import url(./blocks/daily-records/__canvas/daily-records__canvas.css);*/
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-button.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-input.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-inputs.css);

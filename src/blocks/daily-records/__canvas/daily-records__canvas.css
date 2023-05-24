@@ -1,0 +1,7 @@
+.daily-records__canvas {
+    width: 300px;
+    height: 300px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}

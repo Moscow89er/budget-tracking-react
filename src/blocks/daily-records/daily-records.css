@@ -1,6 +1,6 @@
-  .daily-records {
-    margin: 50px auto;
-    max-width: 880px;
-    display: flex;
-    flex-direction: column;
-  }
+.daily-records {
+  margin: 50px auto;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+}
