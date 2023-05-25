@@ -2,7 +2,7 @@
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/header__title.css);
 @import url(./blocks/daily-records/daily-records.css);
-/*@import url(./blocks/daily-records/__canvas/daily-records__canvas.css);*/
+@import url(./blocks/daily-records/__canvas/daily-records__canvas.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-button.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-input.css);
 @import url(./blocks/daily-records/___balance-controls/daily-records__balance-controls-inputs.css);
@@ -29,3 +29,5 @@
 @import url(./blocks/transactions/__container/transactions__container.css);
 @import url(./blocks/transactions/__title/transactions__title.css);
 @import url(./blocks/transactions/transactions.css);
+@import url(./blocks/transaction-container/transaction-container.css);
+@import url(./blocks/transaction-container/__paragraph/transaction-container__paragraph.css);

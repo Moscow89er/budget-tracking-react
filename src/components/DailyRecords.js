@@ -9,6 +9,8 @@ function DailyRecords() {
     const [rub, setRub] = useState(0);
     const [usd, setUsd] = useState(0);
     const [gel, setGel] = useState(0);
+    const [rubToUsd, setRubToUsd] = useState(0.012); //курс рубля к доллару на 25.05.2023
+    const [gelToUsd, setGelToUsd] = useState(0.39); //курс лари к доллару на 25.05.2023
     const chartRef = useRef(null);
     const myChartRef = useRef(null);
 
@@ -26,7 +28,7 @@ function DailyRecords() {
               datasets: [
                 {
                   label: 'Баланс',
-                  data: [rub, usd, gel],
+                  data: [rub*rubToUsd, usd, gel*gelToUsd],
                   backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -54,7 +56,7 @@ function DailyRecords() {
         return () => {
             myChartRef.current.destroy();
         };
-    }, [rub, usd, gel]);
+    }, [rub, usd, gel, rubToUsd, gelToUsd]);
 
 
     const handleInputChange = (e) => {
@@ -63,7 +65,7 @@ function DailyRecords() {
 
     const handleCurrencyChange = (e) => {
         setSelectedCurency(e.target.value);
-    }
+    };
 
     const handleIncrement = () => {
         const parsedNumber = parseInt(inputValue);
@@ -125,14 +127,7 @@ function DailyRecords() {
                         <span id="daily-balance-value-GEL">GEL: {gel}</span>
                     </div>
                 </div>
-                <canvas className="daily-records__canvas" ref={chartRef} 
-                    style={{
-                        width: "300px",
-                        height: "300px",
-                        margin: "0 auto",
-                        display: "block"
-                    }}
-                />
+                <canvas className="daily-records__canvas" ref={chartRef} />
                 <div className="daily-records__balance-controls">
                     <h2 className="daily-records__balance-controls-title">Управление балансом</h2>
                     <div className="daily-records__balance-controls-inputs" id="balance-inputs">

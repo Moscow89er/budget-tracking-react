@@ -5,5 +5,12 @@
     background-color: #E6E6FA;
     border-radius: 5px;
     padding: 20px;
-    max-height: 320px;
+    height: auto;
+}
+
+@media (max-width: 696px) {
+    .daily-records__balance-container {
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }

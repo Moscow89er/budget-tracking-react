@@ -1,4 +1,8 @@
 .daily-records__balance {
-    max-width: 440px;
     height: 300px;
+}
+@media (max-width: 696px) {
+    .daily-records__balance {
+        height: 140px;
+    }
 }
