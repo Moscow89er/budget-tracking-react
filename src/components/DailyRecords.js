@@ -9,8 +9,8 @@ function DailyRecords() {
     const [rub, setRub] = useState(0);
     const [usd, setUsd] = useState(0);
     const [gel, setGel] = useState(0);
-    const [rubToUsd, setRubToUsd] = useState(0.012); //курс рубля к доллару на 25.05.2023
-    const [gelToUsd, setGelToUsd] = useState(0.39); //курс лари к доллару на 25.05.2023
+    const rubToUsd = 0.012; //курс рубля к доллару на 25.05.2023
+    const gelToUsd = 0.39; //курс лари к доллару на 25.05.2023
     const chartRef = useRef(null);
     const myChartRef = useRef(null);
 
@@ -56,7 +56,7 @@ function DailyRecords() {
         return () => {
             myChartRef.current.destroy();
         };
-    }, [rub, usd, gel, rubToUsd, gelToUsd]);
+    }, [rub, usd, gel]);
 
 
     const handleInputChange = (e) => {
@@ -118,19 +118,19 @@ function DailyRecords() {
                 <div className="daily-records__balance">
                     <h4 className="daily-records__balance-title">Баланс:</h4>
                     <div className="daily-records__balance-value">
-                        <span id="daily-balance-value-RUB">RUB: {rub}</span>
+                        <span>RUB: {rub}</span>
                     </div>
                     <div className="daily-records__balance-value">
-                        <span id="daily-balance-value-USD">USD: {usd}</span>
+                        <span>USD: {usd}</span>
                     </div>
                     <div className="daily-records__balance-value">
-                        <span id="daily-balance-value-GEL">GEL: {gel}</span>
+                        <span>GEL: {gel}</span>
                     </div>
                 </div>
                 <canvas className="daily-records__canvas" ref={chartRef} />
                 <div className="daily-records__balance-controls">
                     <h2 className="daily-records__balance-controls-title">Управление балансом</h2>
-                    <div className="daily-records__balance-controls-inputs" id="balance-inputs">
+                    <div className="daily-records__balance-controls-inputs">
                         <label className="daily-records__balance-controls-label" htmlFor="balance-amount">Сумма:</label>
                         <input className="daily-records__balance-controls-input" id="balance-amount" type="number" value={inputValue} onChange={handleInputChange} min="0" required />
                         <label className="daily-records__balance-controls-label" htmlFor="balance-currency">Валюта:</label>
@@ -140,8 +140,8 @@ function DailyRecords() {
                             <option value="GEL">GEL</option>
                             <option value="USD">USD</option>
                         </select>
-                        <button className="daily-records__balance-controls-button" id="balance-add" onClick={handleIncrement} type="submit">Добавить</button>
-                        <button className="daily-records__balance-controls-button" id="balance-subtract" onClick={handleDecrement} type="submit">Вычесть</button>
+                        <button className="daily-records__balance-controls-button" onClick={handleIncrement} type="submit">Добавить</button>
+                        <button className="daily-records__balance-controls-button" onClick={handleDecrement} type="submit">Вычесть</button>
                     </div>
                 </div>
             </div>

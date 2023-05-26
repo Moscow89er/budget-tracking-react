@@ -1,0 +1,10 @@
+.goals__controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #E6E6FA;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+    height: auto;
+}

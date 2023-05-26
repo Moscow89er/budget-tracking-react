@@ -1,0 +1,9 @@
+.goal-container {
+    margin: 10px 0 10px 0px;
+    width: auto;
+    background-color: #fcc3ed;
+    text-align: center;
+    color: #000;
+    border-radius: 5px;
+    border: 1px solid #000000;;
+}
