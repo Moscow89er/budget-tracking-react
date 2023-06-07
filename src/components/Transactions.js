@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TransactionContainer from "./TransactionContainer";
+import IndexedDB from "./IndexedDB";
 
 function Transactions() {
     const [transactions, setTransactions] = useState([]);
+    const [db, setDb] = useState(null);
     const [transaction, setTransaction] = useState({
         date: '',
         category: '',
@@ -13,15 +15,41 @@ function Transactions() {
         currencyLocal: ''
     });
 
+    // Инициализируем IndexedDB при загрузке компонента
+    useEffect(() => {
+        const initDB = async () => {
+            const idb = new IndexedDB('BudgetTrackingDB');
+            setDb(idb);
+
+            try {
+                const transactionData = await idb.getAllData('transactions');
+                setTransactions(transactionData);
+            } catch (error) {
+                console.log('Ошибка получения данных', error);
+            }
+        };
+
+        initDB();
+    }, []);
+
     const handleInputChange = (e) => {
         setTransaction({...transaction, [e.target.id]: e.target.value});
     };
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setTransactions([...transactions, transaction]);
+        // Сохраняем новую транзакцию в IndexedDB
+        if (db) {
+            try {
+                await db.addData('transactions', transaction);
+                setTransactions([...transactions, transaction]);
+            } catch (error) {
+                console.log('Ошибка сохранения транзации', error);
+            }
+        }
+
         setTransaction({
             date: '',
             category: '',
@@ -52,7 +80,7 @@ function Transactions() {
                 <input className="transactions__add-form__input-category" id="category" type="text" required value={transaction.category} onChange={handleInputChange} />
                 <label htmlFor="location">Место:</label>
                 <input className="transactions__add-form__input-location" id="location" type="text" required value={transaction.location} onChange={handleInputChange} />
-                <label htmlFor="amountForeign">Сумма в иностранной валюте:</label>
+                <label htmlFor="amountForeign">Сумма в местной валюте:</label>
                 <input className="transactions__add-form__input-foreign" id="amountForeign" type="number" min="0" step="0.01" required value={transaction.amountForeign} onChange={handleInputChange} />
                 <label htmlFor="currencyForeign">Валюта:</label>
                 <select className="transactions__add-form__currency-foreign" id="currencyForeign" required value={transaction.currencyForeign} onChange={handleInputChange}>
@@ -61,7 +89,7 @@ function Transactions() {
                     <option value="GEL">GEL</option>
                     <option value="USD">USD</option>
                 </select>
-                <label htmlFor="amountLocal">Сумма в местной валюте:</label>
+                <label htmlFor="amountLocal">Эквивалент в иностранной валюте:</label>
                 <input className="transactions__add-form__input-local" id="amountLocal" type="number" min="0" step="0.01" required value={transaction.amountLocal} onChange={handleInputChange} />
                 <label htmlFor="currencyLocal">Валюта:</label>
                 <select className="transactions__add-form__currency-local" id="currencyLocal" required onChange={handleInputChange} value={transaction.currencyLocal}>

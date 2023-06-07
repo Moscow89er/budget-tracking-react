@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Chart, LinearScale, BarController, CategoryScale, BarElement } from "chart.js";
+import IndexedDB from "./IndexedDB";
 
 Chart.register(LinearScale, BarController, CategoryScale, BarElement);
+
+const db = new IndexedDB('BudgetTrackingDB'); // создание нового экземпляра IndexedDB
 
 function DailyRecords() {
     const [inputValue, setInputValue] = useState('');
@@ -52,6 +55,21 @@ function DailyRecords() {
               },
             },
           });
+
+        (async () => {
+            try {
+                const data = await db.getAllData('dailyRecords');
+                if (data.length > 0) {
+                    setRub(data[0].rub);
+                    setUsd(data[0].usd);
+                    setGel(data[0].gel);
+                } else {
+                    await db.addData('dailyRecords', {id: 1, rub: 0, usd: 0, gel: 0 });
+                }
+            } catch(error) {
+                console.log('Ошибка получения данных:', error);
+            }
+        })();
           
         return () => {
             myChartRef.current.destroy();
@@ -67,47 +85,61 @@ function DailyRecords() {
         setSelectedCurency(e.target.value);
     };
 
-    const handleIncrement = () => {
+    const handleIncrement = async () => {
         const parsedNumber = parseInt(inputValue);
 
         if(!isNaN(parsedNumber)) {
-            switch (selectedCurrency) {
-                case 'RUB':
-                    setRub(rub + parsedNumber);
-                    break;
-                case 'USD':
-                    setUsd(usd + parsedNumber);
-                    break;
-                case 'GEL':
-                    setGel(gel + parsedNumber);
-                    break;
-                    default:
-                    break;
+            try {
+                switch (selectedCurrency) {
+                    case 'RUB':
+                        await db.updateData('dailyRecords', {id: 1, rub: rub + parsedNumber, usd: usd, gel: gel});
+                        setRub(rub + parsedNumber);
+                        break;
+                    case 'USD':
+                        await db.updateData('dailyRecords', {id: 1, rub: rub, usd: usd + parsedNumber, gel: gel});
+                        setUsd(usd + parsedNumber);
+                        break;
+                    case 'GEL':
+                        await db.updateData('dailyRecords', {id: 1, rub: rub, usd: usd, gel: gel + parsedNumber});
+                        setGel(gel + parsedNumber);
+                        break;
+                        default:
+                        break;
+                }
+                setInputValue('');
+                setSelectedCurency('');
+            } catch(error) {
+                console.log('Ошибка обновления данных:', error);
             }
-            setInputValue('');
-            setSelectedCurency('');
         }
     };
 
-    const handleDecrement = () => {
+    const handleDecrement = async () => {
         const parsedNumber = parseInt(inputValue);
 
         if(!isNaN(parsedNumber)) {
-            switch (selectedCurrency) {
-                case 'RUB':
-                    setRub(rub - parsedNumber);
-                    break;
-                case 'USD':
-                    setUsd(usd - parsedNumber);
-                    break;
-                case 'GEL':
-                    setGel(gel - parsedNumber);
-                    break;
-                    default:
-                    break;
+            try {
+                switch (selectedCurrency) {
+                    case 'RUB':
+                        await db.updateData('dailyRecords', {id: 1, rub: rub - parsedNumber, usd: usd, gel: gel});
+                        setRub(rub - parsedNumber);
+                        break;
+                    case 'USD':
+                        await db.updateData('dailyRecords', {id: 1, rub: rub, usd: usd - parsedNumber, gel: gel});
+                        setUsd(usd - parsedNumber);
+                        break;
+                    case 'GEL':
+                        await db.updateData('dailyRecords', {id: 1, rub: rub, usd: usd, gel: gel - parsedNumber});
+                        setGel(gel - parsedNumber);
+                        break;
+                        default:
+                        break;
+                }
+                setInputValue('');
+                setSelectedCurency('');
+            } catch(error) {
+                console.log('Ошибка обновления данных:', error);
             }
-            setInputValue('');
-            setSelectedCurency('');
         }
     };
 
