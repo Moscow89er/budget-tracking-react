@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GoalContainer from "./GoalContainer";
 
-function Goals () {
+function Goals ({ db }) {
     const [goals, setGoals] = useState([]);
     const [goal, setGoal] = useState({
         description: '',
@@ -10,15 +10,35 @@ function Goals () {
         deadline: ''
     });
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const goalData = await db.getAllData('goals');
+                setGoals(goalData);
+            } catch (error) {
+                console.log('Ошибка получения данных', error);
+            }
+        };
+
+        fetchData();
+    }, [db]);
+
     const handleInputChange = (e) => {
         setGoal({...goal, [e.target.id]: e.target.value});
     };
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setGoals([...goals, goal]);
+        try {
+            await db.addData('goals', goal);
+            const goalData = await db.getAllData('goals');
+            setGoals(goalData);
+        } catch (error) {
+            console.log('Ошибка сохранения цели', error);
+        }
+
         setGoal({
             description: '',
             amount: '',

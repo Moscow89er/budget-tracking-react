@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import TransactionContainer from "./TransactionContainer";
-import IndexedDB from "./IndexedDB";
 
-function Transactions() {
+function Transactions({ db }) {
     const [transactions, setTransactions] = useState([]);
-    const [db, setDb] = useState(null);
     const [transaction, setTransaction] = useState({
         date: '',
         category: '',
@@ -17,20 +15,17 @@ function Transactions() {
 
     // Инициализируем IndexedDB при загрузке компонента
     useEffect(() => {
-        const initDB = async () => {
-            const idb = new IndexedDB('BudgetTrackingDB');
-            setDb(idb);
-
+        const fetchData = async () => {
             try {
-                const transactionData = await idb.getAllData('transactions');
+                const transactionData = await db.getAllData('transactions');
                 setTransactions(transactionData);
             } catch (error) {
                 console.log('Ошибка получения данных', error);
             }
         };
 
-        initDB();
-    }, []);
+        fetchData();
+    }, [db]);
 
     const handleInputChange = (e) => {
         setTransaction({...transaction, [e.target.id]: e.target.value});
@@ -40,14 +35,13 @@ function Transactions() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Сохраняем новую транзакцию в IndexedDB
-        if (db) {
-            try {
-                await db.addData('transactions', transaction);
-                setTransactions([...transactions, transaction]);
-            } catch (error) {
-                console.log('Ошибка сохранения транзации', error);
-            }
+        // Сохраняем новую транзакцию в IndexedDB 
+        try {
+            await db.addData('transactions', transaction);
+            const transactionData = await db.getAllData('transactions');
+            setTransactions(transactionData);
+        } catch (error) {
+            console.log('Ошибка сохранения транзации', error);
         }
 
         setTransaction({
@@ -71,7 +65,7 @@ function Transactions() {
             ))}
           </div>
         </div>
-        <div className="transactions__add-form__container" onSubmit={handleSubmit}>
+        <div className="transactions__add-form__container">
             <h3 className="transactions__add-form__title">Добавить транзакцию</h3>
             <form className="transactions__add-form" onSubmit={handleSubmit}>
                 <label htmlFor="date">Дата:</label>

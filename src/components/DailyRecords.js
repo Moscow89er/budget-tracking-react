@@ -1,12 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Chart, LinearScale, BarController, CategoryScale, BarElement } from "chart.js";
-import IndexedDB from "./IndexedDB";
 
 Chart.register(LinearScale, BarController, CategoryScale, BarElement);
 
-const db = new IndexedDB('BudgetTrackingDB'); // создание нового экземпляра IndexedDB
-
-function DailyRecords() {
+function DailyRecords({ db }) {
     const [inputValue, setInputValue] = useState('');
     const [selectedCurrency, setSelectedCurency] = useState('');
     const [rub, setRub] = useState(0);
@@ -56,7 +53,7 @@ function DailyRecords() {
             },
           });
 
-        (async () => {
+        const fetchData = async () => {
             try {
                 const data = await db.getAllData('dailyRecords');
                 if (data.length > 0) {
@@ -69,12 +66,14 @@ function DailyRecords() {
             } catch(error) {
                 console.log('Ошибка получения данных:', error);
             }
-        })();
+        };
+
+        fetchData();
           
         return () => {
             myChartRef.current.destroy();
         };
-    }, [rub, usd, gel]);
+    }, [rub, usd, gel, db]);
 
 
     const handleInputChange = (e) => {
