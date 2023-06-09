@@ -1,6 +1,6 @@
 .exchange {
     margin: auto;
-    padding-top: 45px;
+    padding: 45px 20px 0;
     max-width: 880px;
     min-height: 74px;
     display: flex;
@@ -8,6 +8,6 @@
 }
 @media (max-width: 696px) {
     .exchange {
-        padding-top: 10px;
+        padding: 10px 10px 0;
     }
 }

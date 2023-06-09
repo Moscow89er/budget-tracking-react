@@ -4,6 +4,7 @@ import Transactions from "./Transactions";
 import Goals from "./Goals";
 import IndexedDB from "./IndexedDB";
 import ExchangeRate from "./ExchangeRate";
+import Footer from "./Footer";
 
 function App() {
   const db = new IndexedDB('BudgetTrackingDB');
@@ -15,6 +16,7 @@ function App() {
       <DailyRecords db={db} />
       <Goals db={db} />
       <Transactions db={db} />
+      <Footer />
     </div>
   );
 }

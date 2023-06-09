@@ -44,3 +44,6 @@
 @import url(./blocks/exchange/__container/__paragraph/exchange__container__paragraph.css);
 @import url(./blocks/exchange/__container/exchange__container.css);
 @import url(./blocks/exchange/__title/exchange__title.css);
+@import url(./blocks/footer/footer.css);
+@import url(./blocks/footer/__author/footer__author.css);
+@import url(./blocks/footer/__date/footer__date.css);
