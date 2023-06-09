@@ -3,8 +3,8 @@ function ExchangeRate () {
         <div className="exchange">
             <h2 className="exchange__title">Курс валют</h2>
             <div className="exchange__container">
-                <p className="exchange__container__paragraph">To USD: 81,45</p>
-                <p className="exchange__container__paragraph">To GEL: 31,12</p>
+                <p className="exchange__container__paragraph">USD: 81,45</p>
+                <p className="exchange__container__paragraph">GEL: 31,12</p>
             </div>
         </div>
     );
