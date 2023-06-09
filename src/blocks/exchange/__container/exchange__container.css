@@ -10,9 +10,3 @@
     border-radius: 5px;
     border: 1px solid #000000;
 }
-@media (max-width: 696px) {
-    .exchange__container {
-        flex-direction: column;
-        justify-content: space-between;
-    }
-}
