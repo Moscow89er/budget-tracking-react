@@ -1,5 +1,5 @@
 .header__title {
-    margin: auto;
+    margin: 10px auto;
     color: #000;
     max-width: 500px;
     font-weight: 700;
@@ -8,8 +8,7 @@
 }
 @media (max-width: 696px) {
     .header__title {
-        max-width: 220px;
-        font-size: 27px;
-        line-height: 32px;
+        font-size: 36px;
+        line-height: 38px;
     }
 }
