@@ -12,10 +12,10 @@ function App() {
   return (
     <div>
       <Header />
-      <ExchangeRate />
       <DailyRecords db={db} />
       <Goals db={db} />
       <Transactions db={db} />
+      <ExchangeRate />
       <Footer />
     </div>
   );

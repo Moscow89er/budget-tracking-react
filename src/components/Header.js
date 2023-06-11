@@ -1,7 +1,9 @@
+import headerLogo from '../images/header_logo.png';
+
 function Header() {
     return (
         <header className="header">
-            <h1 className="header__title">Учет финансов</h1>
+            <img className="header__logo" src={headerLogo} alt="logo"></img>
         </header>
     );
 }
