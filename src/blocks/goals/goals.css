@@ -1,9 +1,11 @@
 .goals {
-    margin: 50px auto;
+    margin: 0 auto;
     padding: 0 20px 0;
     max-width: 880px;
+    min-height: 654px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 .goals label {
     margin-bottom: 5px;
@@ -15,5 +17,6 @@
 @media (max-width: 696px) {
     .goals {
         padding: 0 10px 0;
+        min-height: 568px;
     }
 }

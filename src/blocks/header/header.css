@@ -1,5 +1,12 @@
 .header {
     background-color: #9C80F7;
     display: flex;
+    justify-content: space-between;
     border-bottom: 2px solid #000;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 100;
 }

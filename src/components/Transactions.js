@@ -58,7 +58,6 @@ function Transactions({ db }) {
     return (
       <section className="transactions">
         <div>
-          <h2 className="transactions__title">Транзакции</h2>
           <div className="transactions__container">
             {transactions.map((transaction, index) => (
                 <TransactionContainer key={index} transaction={transaction} />

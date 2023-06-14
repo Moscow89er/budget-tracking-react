@@ -1,0 +1,16 @@
+.footer__button {
+    width: 55px;
+    height: 50px;
+    margin: 0 10px;
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+    text-decoration: none;
+}
+.footer__button_active {
+    color: #000;
+}

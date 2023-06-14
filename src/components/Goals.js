@@ -49,7 +49,6 @@ function Goals ({ db }) {
 
     return (
         <div className="goals">
-            <h2 className="goals__title">Цели</h2>
             <div className="goals__container">
                 {goals.map((goal, index) => (
                     <GoalContainer key={index} goal={goal}/>

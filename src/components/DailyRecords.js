@@ -144,7 +144,6 @@ function DailyRecords({ db }) {
 
     return (
         <div className="daily-records">
-            <h2 className="daily-records__title">Бюджет</h2>
             <div className="daily-records__balance-container">
                 <div className="daily-records__balance">
                     <h4 className="daily-records__balance-title">Баланс:</h4>
