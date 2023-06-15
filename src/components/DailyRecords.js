@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Chart, LinearScale, BarController, CategoryScale, BarElement } from "chart.js";
+import { Chart, PieController, ArcElement, CategoryScale, Tooltip, LinearScale } from 'chart.js';
 
-Chart.register(LinearScale, BarController, CategoryScale, BarElement);
+Chart.register(PieController, ArcElement, CategoryScale, LinearScale, Tooltip);
 
 function DailyRecords({ db }) {
     const [inputValue, setInputValue] = useState('');
@@ -22,7 +22,7 @@ function DailyRecords({ db }) {
         }
 
         myChartRef.current = new Chart(chartCanvasContext, {
-            type: 'bar',
+            type: 'pie',
             data: {
               labels: ['RUB', 'USD', 'GEL'],
               datasets: [
@@ -30,14 +30,14 @@ function DailyRecords({ db }) {
                   label: 'Баланс',
                   data: [rub*rubToUsd, usd, gel*gelToUsd],
                   backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(0, 0, 205, 0.6)',
+                    'rgba(11, 156, 49, 0.6)',
+                    'rgba(255, 0, 0, 0.6)',
                   ],
                   borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
+                    'rgba(0, 0, 205, 1)',
+                    'rgba(11, 156, 49, 1)',
+                    'rgba(255, 0, 0, 1)',
                   ],
                   borderWidth: 1,
                 },
@@ -45,11 +45,6 @@ function DailyRecords({ db }) {
             },
             options: {
               responsive: true,
-              scales: {
-                y: {
-                  beginAtZero: true,
-                },
-              },
             },
           });
 
