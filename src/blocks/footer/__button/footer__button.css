@@ -14,3 +14,13 @@
 .footer__button_active {
     color: #000;
 }
+.footer__button:hover {
+    transition: 1s linear 0.05s;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+.footer__button_active:hover {
+    transition: 1s linear 0.05s;
+    color: rgba(29, 28, 28, 0.8);
+    cursor: pointer;
+}

@@ -1,8 +1,13 @@
 .transactions__add-form__button {
     margin-bottom: 5px;
     padding: 10px 20px;
-    border: 1px solid #000;
+    border: none;
     border-radius: 5px;
     background-color: #9C80F7;
     color: #ffffff;
+}
+.transactions__add-form__button:hover {
+    transition: 1s linear 0.05s;
+    background: rgba(156, 128, 247, 0.8);
+    cursor: pointer;
 }
