@@ -1,6 +1,7 @@
 .daily-records__balance-controls-select {
     margin-bottom: 5px;
     padding: 10px;
+    background-color: #fff;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
