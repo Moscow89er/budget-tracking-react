@@ -30,13 +30,13 @@ function DailyRecords({ db }) {
                   label: 'Баланс',
                   data: [rub*rubToUsd, usd, gel*gelToUsd],
                   backgroundColor: [
-                    'rgba(0, 0, 205, 0.6)',
-                    'rgba(11, 156, 49, 0.6)',
+                    'rgba(211, 189, 253, 0.6)',
+                    'rgba(11, 156, 49, 0.5)',
                     'rgba(187, 234, 242, 0.6)',
                   ],
                   borderColor: [
-                    'rgba(0, 0, 205, 0.6)',
-                    'rgba(11, 156, 49, 0.6)',
+                    'rgba(211, 189, 253, 0.6)',
+                    'rgba(11, 156, 49, 0.5)',
                     'rgba(187, 234, 242, 0.6)',
                   ],
                   borderWidth: 0.5,
