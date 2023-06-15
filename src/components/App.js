@@ -1,5 +1,5 @@
 import Header from "./Header";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import DailyRecords from "./DailyRecords";
 import Transactions from "./Transactions";
@@ -12,7 +12,7 @@ function App() {
   const db = new IndexedDB('BudgetTrackingDB');
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Router basename={process.env.PUBLIC_URL}>
       <div>
         <Header />
         <Routes>
@@ -28,7 +28,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
