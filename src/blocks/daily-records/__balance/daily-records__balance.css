@@ -1,5 +1,5 @@
 .daily-records__balance {
-    height: 300px;
+    height: auto;
 }
 @media (max-width: 696px) {
     .daily-records__balance {

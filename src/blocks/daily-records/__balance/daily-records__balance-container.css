@@ -1,17 +1,10 @@
 .daily-records__balance-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     background-color: transparent;
     border-radius: 5px;
     padding: 10px;
     margin: 0;
     height: auto;
-}
-
-@media (max-width: 696px) {
-    .daily-records__balance-container {
-        flex-direction: column;
-        justify-content: space-between;
-    }
 }

@@ -1,6 +1,13 @@
 .daily-records__canvas {
-    width: 280px !important;
+    width: 400px !important;
     height: auto !important;
     margin: 10px auto !important;
     display: block !important;
 }
+@media (max-width: 696px) {
+    .daily-records__canvas {
+        width: auto !important;
+        height: 300px !important;
+        margin: 0 !important;
+    }
+  }

@@ -1,7 +1,7 @@
 .daily-records {
   margin: 0 auto;
   max-width: 880px;
-  min-height: 654px;
+  min-height: 778px;
   padding: 0 20px 0;
   display: flex;
   flex-direction: column;
@@ -10,6 +10,5 @@
 @media (max-width: 696px) {
   .daily-records {
       padding: 0 10px 0;
-      min-height: 568px;
   }
 }
