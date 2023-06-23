@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import TransactionContainer from "./TransactionContainer";
 
-function Transactions({ db }) {
+function Transactions({ db, rubToUsd, rubToGel }) {
     const [transactions, setTransactions] = useState([]);
     const [transaction, setTransaction] = useState({
         date: '',
@@ -9,8 +9,7 @@ function Transactions({ db }) {
         location: '',
         amountForeign: '',
         currencyForeign: '',
-        amountLocal: '',
-        currencyLocal: ''
+        amountLocal: ''
     });
 
     // Инициализируем IndexedDB при загрузке компонента
@@ -30,7 +29,29 @@ function Transactions({ db }) {
     }, [db]);
 
     const handleInputChange = (e) => {
-        setTransaction({...transaction, [e.target.id]: e.target.value});
+        const updatedTransaction = {...transaction, [e.target.id]: e.target.value};
+    
+        // Преобразовываем иностранную сумму в рубли, если указана сумма и валюта
+        if (e.target.id === 'amountForeign' || e.target.id === 'currencyForeign') {
+            if (updatedTransaction.amountForeign && updatedTransaction.currencyForeign) {
+                let convertedAmount;
+                switch (updatedTransaction.currencyForeign) {
+                    case 'USD':
+                        convertedAmount = updatedTransaction.amountForeign * rubToUsd;
+                        break;
+                    case 'GEL':
+                        convertedAmount = updatedTransaction.amountForeign * rubToGel;
+                        break;
+                    default:
+                        // По умолчанию сумма в рублях равна иностранной сумме
+                        convertedAmount = updatedTransaction.amountForeign;
+                        break;
+                }
+                updatedTransaction.amountLocal = +convertedAmount.toFixed(2);
+            }
+        }
+    
+        setTransaction(updatedTransaction);
     };
 
 
@@ -54,8 +75,7 @@ function Transactions({ db }) {
             location: '',
             amountForeign: '',
             currencyForeign: '',
-            amountLocal: '',
-            currencyLocal: ''
+            amountLocal: ''
         });
     }
 
@@ -77,19 +97,10 @@ function Transactions({ db }) {
                 <input className="transactions__add-form__input-category" id="category" type="text" required value={transaction.category} onChange={handleInputChange} />
                 <label htmlFor="location">Место:</label>
                 <input className="transactions__add-form__input-location" id="location" type="text" required value={transaction.location} onChange={handleInputChange} />
-                <label htmlFor="amountForeign">Сумма в местной валюте:</label>
+                <label htmlFor="amountForeign">Сумма</label>
                 <input className="transactions__add-form__input-foreign" id="amountForeign" type="number" min="0" step="0.01" required value={transaction.amountForeign} onChange={handleInputChange} />
                 <label htmlFor="currencyForeign">Валюта:</label>
                 <select className="transactions__add-form__currency-foreign" id="currencyForeign" required value={transaction.currencyForeign} onChange={handleInputChange}>
-                    <option value="">Выберите валюту</option>
-                    <option value="RUB">RUB</option>
-                    <option value="GEL">GEL</option>
-                    <option value="USD">USD</option>
-                </select>
-                <label htmlFor="amountLocal">Эквивалент в иностранной валюте:</label>
-                <input className="transactions__add-form__input-local" id="amountLocal" type="number" min="0" step="0.01" required value={transaction.amountLocal} onChange={handleInputChange} />
-                <label htmlFor="currencyLocal">Валюта:</label>
-                <select className="transactions__add-form__currency-local" id="currencyLocal" required onChange={handleInputChange} value={transaction.currencyLocal}>
                     <option value="">Выберите валюту</option>
                     <option value="RUB">RUB</option>
                     <option value="GEL">GEL</option>
