@@ -1,0 +1,10 @@
+.goal-container__delete-button {
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: xx-large;
+    background: none;
+    border: none;
+}

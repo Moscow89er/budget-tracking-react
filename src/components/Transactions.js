@@ -18,6 +18,8 @@ function Transactions({ db }) {
         const fetchData = async () => {
             try {
                 const transactionData = await db.getAllData('transactions');
+                // Сортировка массива транзакций по дате
+                transactionData.sort((a, b) => new Date(a.date) - new Date(b.date));
                 setTransactions(transactionData);
             } catch (error) {
                 console.log('Ошибка получения данных', error);
@@ -39,6 +41,8 @@ function Transactions({ db }) {
         try {
             await db.addData('transactions', transaction);
             const transactionData = await db.getAllData('transactions');
+            // Сортировка массива транзакций по дате
+            transactionData.sort((a, b) => new Date(a.date) - new Date(b.date));
             setTransactions(transactionData);
         } catch (error) {
             console.log('Ошибка сохранения транзации', error);

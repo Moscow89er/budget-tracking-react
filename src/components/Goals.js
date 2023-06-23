@@ -47,15 +47,25 @@ function Goals ({ db }) {
         });
     }
 
+    const handleDelete = async (id) => {
+        try {
+            await db.deleteData('goals', id);
+            const goalData = await db.getAllData('goals');
+            setGoals(goalData);
+        } catch (error) {
+            console.log('Ошибка удаления цели', error);
+        }
+    }
+
     return (
         <div className="goals">
             <div className="goals__container">
                 {goals.map((goal, index) => (
-                    <GoalContainer key={index} goal={goal}/>
+                    <GoalContainer key={index} goal={goal} onDelete={handleDelete}/>
                 ))}
             </div>
             <div className="goals__controls">
-            <h2 className="goals__controls__title">Управление целями</h2>
+            <h2 className="goals__controls__title">Добавить цель</h2>
                 <form className="goals__controls__form" onSubmit={handleSubmit}>
                     <label htmlFor="description">Описание:</label>
                     <input className="goals__controls__form-input" id="description" type="text" required value={goal.description} onChange={handleInputChange} />

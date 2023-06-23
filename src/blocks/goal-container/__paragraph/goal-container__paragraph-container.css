@@ -1,0 +1,6 @@
+.goal-container__paragraph-container {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
