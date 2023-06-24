@@ -1,0 +1,14 @@
+.daily_records_popup__button {
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9C80F7;
+    color: #ffffff;
+}
+.daily_records_popup__button:hover {
+    transition: 1s linear 0.05s;
+    background: rgba(156, 128, 247, 0.8);
+    cursor: pointer;
+}

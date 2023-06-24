@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Chart, PieController, ArcElement, CategoryScale, Tooltip, LinearScale } from 'chart.js';
+import { Chart, PieController, ArcElement, CategoryScale, Tooltip, LinearScale } from "chart.js";
+import DailyRecordsPopup from "./DailyRecordsPopup";
 
 Chart.register(PieController, ArcElement, CategoryScale, LinearScale, Tooltip);
 
@@ -9,10 +10,20 @@ function DailyRecords({ db }) {
     const [rub, setRub] = useState(0);
     const [usd, setUsd] = useState(0);
     const [gel, setGel] = useState(0);
-    const rubToUsd = 0.012; //курс рубля к доллару на 25.05.2023
-    const gelToUsd = 0.39; //курс лари к доллару на 25.05.2023
+    const rubToUsd = 0.012; //курс рубля к доллару на 23.06.2023
+    const gelToUsd = 0.31; //курс лари к доллару на 23.06.2023
     const chartRef = useRef(null);
     const myChartRef = useRef(null);
+    const [isDailyRecordsPopupOpen, setIsDailyRecordsPopupOpen] = useState(true);
+
+    const onClose = () => {
+        setIsDailyRecordsPopupOpen(false);
+    }
+
+    const handleOpenPopup = () => {
+        setIsDailyRecordsPopupOpen(true);
+        console.log('Popup should be open:', isDailyRecordsPopupOpen);
+    }
 
     useEffect(() => {
         const chartCanvasContext = chartRef.current.getContext('2d');
@@ -138,39 +149,36 @@ function DailyRecords({ db }) {
     };
 
     return (
-        <div className="daily-records">
-            <div className="daily-records__balance-container">
-                <div className="daily-records__balance">
-                    <h4 className="daily-records__balance-title">Баланс:</h4>
-                    <div className="daily-records__balance-value">
-                        <span>RUB: {rub}</span>
+        <>
+            <div className="daily-records">
+                <div className="daily-records__balance-container">
+                    <div className="daily-records__balance">
+                        <h4 className="daily-records__balance-title">Баланс:</h4>
+                        <div className="daily-records__balance-value">
+                            <span>RUB: {rub}</span>
+                        </div>
+                        <div className="daily-records__balance-value">
+                            <span>USD: {usd}</span>
+                        </div>
+                        <div className="daily-records__balance-value">
+                            <span>GEL: {gel}</span>
+                        </div>
                     </div>
-                    <div className="daily-records__balance-value">
-                        <span>USD: {usd}</span>
-                    </div>
-                    <div className="daily-records__balance-value">
-                        <span>GEL: {gel}</span>
-                    </div>
-                </div>
-                <canvas className="daily-records__canvas" ref={chartRef} />
-                <div className="daily-records__balance-controls">
-                    <h2 className="daily-records__balance-controls-title">Управление балансом</h2>
-                    <div className="daily-records__balance-controls-inputs">
-                        <label className="daily-records__balance-controls-label" htmlFor="balance-amount">Сумма:</label>
-                        <input className="daily-records__balance-controls-input" id="balance-amount" type="number" value={inputValue} onChange={handleInputChange} min="0" required />
-                        <label className="daily-records__balance-controls-label" htmlFor="balance-currency">Валюта:</label>
-                        <select className="daily-records__balance-controls-select" id="balance-currency" onChange={handleCurrencyChange} value={selectedCurrency} required>
-                            <option value="">Выберите валюту</option>
-                            <option value="RUB">RUB</option>
-                            <option value="GEL">GEL</option>
-                            <option value="USD">USD</option>
-                        </select>
-                        <button className="daily-records__balance-controls-button" onClick={handleIncrement} type="submit">Добавить</button>
-                        <button className="daily-records__balance-controls-button" onClick={handleDecrement} type="submit">Вычесть</button>
-                    </div>
+                    <canvas className="daily-records__canvas" ref={chartRef} />
+                    <button className="daily-records__button" type="button" onClick={handleOpenPopup}>Изменить баланс</button>
                 </div>
             </div>
-        </div>
+            <DailyRecordsPopup
+                isOpen={isDailyRecordsPopupOpen}
+                inputValue={inputValue}
+                selectedCurrency={selectedCurrency}
+                handleInputChange={handleInputChange}
+                handleCurrencyChange={handleCurrencyChange}
+                handleIncrement={handleIncrement}
+                handleDecrement={handleDecrement}
+                onClose={onClose}
+             />
+        </>
     );
 }
 

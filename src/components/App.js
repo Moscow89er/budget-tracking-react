@@ -9,8 +9,8 @@ import ExchangeRate from "./ExchangeRate";
 import Footer from "./Footer";
 
 function App() {
-  const rubToUsd = 86.22; //курс рубля к доллару на 23.06.2023
-  const rubToGel = 32.71; //курс рубля к лари на 23.06.2023
+  const rubToUsd = 92.38; //курс рубля к доллару на 24.06.2023
+  const rubToGel = 35.00; //курс рубля к лари на 24.06.2023
 
   const db = new IndexedDB('BudgetTrackingDB');
 
