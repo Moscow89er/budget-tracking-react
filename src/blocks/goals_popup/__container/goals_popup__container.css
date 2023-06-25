@@ -1,0 +1,9 @@
+.goals_popup__container {
+    margin: auto;
+    max-width: 358px;
+    background: #fff;
+    border-radius: 10px;
+    color: #000;
+    padding: 10px;
+    position: sticky;
+}

@@ -1,0 +1,9 @@
+.goals_popup__form-input {
+    margin-bottom: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}

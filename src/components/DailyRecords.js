@@ -22,7 +22,6 @@ function DailyRecords({ db }) {
 
     const handleOpenPopup = () => {
         setIsDailyRecordsPopupOpen(true);
-        console.log('Popup should be open:', isDailyRecordsPopupOpen);
     }
 
     useEffect(() => {

@@ -1,9 +1,7 @@
-.goals__controls__form-input {
+.goals_popup__form-currency {
     margin-bottom: 5px;
     padding: 10px;
-    border-radius: 5px;
     background-color: #fff;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    width: 100%;
-    box-sizing: border-box;
 }

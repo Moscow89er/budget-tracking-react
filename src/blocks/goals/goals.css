@@ -1,6 +1,6 @@
 .goals {
     margin: 0 auto 80px;
-    padding: 0 20px 0;
+    padding: 20px;
     max-width: 880px;
     min-height: 778px;
     display: flex;
@@ -12,9 +12,4 @@
     font-size: 16px;
     line-height: 22px;
     color: #000;
-}
-@media (max-width: 696px) {
-    .goals {
-        padding: 0 10px 0;
-    }
 }

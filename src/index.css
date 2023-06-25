@@ -24,12 +24,6 @@
 @import url(./blocks/transaction-container/transaction-container.css);
 @import url(./blocks/transaction-container/__paragraph/transaction-container__paragraph.css);
 @import url(./blocks/goals/goals.css);
-@import url(./blocks/goals/__controls/__form/goals__controls__form-button.css);
-@import url(./blocks/goals/__controls/__form/goals__controls__form-currency.css);
-@import url(./blocks/goals/__controls/__form/goals__controls__form-input.css);
-@import url(./blocks/goals/__controls/__form/goals__controls__form.css);
-@import url(./blocks/goals/__controls/goals__controls.css);
-@import url(./blocks/goals/__controls/__title/goals__controls__title.css);
 @import url(./blocks/goals/__title/goals__title.css);
 @import url(./blocks/goal-container/__paragraph/goal-container__paragraph.css);
 @import url(./blocks/goal-container/goal-container.css);
@@ -52,3 +46,12 @@
 @import url(./blocks/daily_records_popup/__title/daily_records_popup__title.css);
 @import url(./blocks/daily_records_popup/__container/daily_records_popup__container.css);
 @import url(./blocks/daily_records_popup/daily_records_popup.css);
+@import url(./blocks/goals_popup/__close-button/goals_popup__close-button.css);
+@import url(./blocks/goals_popup/__container/goals_popup__container.css);
+@import url(./blocks/goals_popup/__form/goals_popup__form-button.css);
+@import url(./blocks/goals_popup/__form/goals_popup__form-currency.css);
+@import url(./blocks/goals_popup/__form/goals_popup__form-input.css);
+@import url(./blocks/goals_popup/__form/goals_popup__form.css);
+@import url(./blocks/goals_popup/__title/goals_popup__title.css);
+@import url(./blocks/goals_popup/goals_popup.css);
+@import url(./blocks/goals/__button/goals__button.css);
