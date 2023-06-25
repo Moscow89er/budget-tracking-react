@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import GoalContainer from "./GoalContainer";
 import GoalsPopup from "./GoalsPopup";
 
-function Goals ({ db }) {
+function Goals ({ db, setIsSuccessPopupOpen }) {
     const [goals, setGoals] = useState([]);
     const [goal, setGoal] = useState({
         description: '',
@@ -45,6 +45,11 @@ function Goals ({ db }) {
             await db.addData('goals', goal);
             const goalData = await db.getAllData('goals');
             setGoals(goalData);
+            onClose();
+            setIsSuccessPopupOpen('true');
+                setTimeout(() => {
+                    setIsSuccessPopupOpen(false);
+                }, 3000);
         } catch (error) {
             console.log('Ошибка сохранения цели', error);
         }

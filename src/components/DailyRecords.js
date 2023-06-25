@@ -4,7 +4,7 @@ import DailyRecordsPopup from "./DailyRecordsPopup";
 
 Chart.register(PieController, ArcElement, CategoryScale, LinearScale, Tooltip);
 
-function DailyRecords({ db }) {
+function DailyRecords({ db, setIsSuccessPopupOpen }) {
     const [inputValue, setInputValue] = useState('');
     const [selectedCurrency, setSelectedCurency] = useState('');
     const [rub, setRub] = useState(0);
@@ -112,6 +112,11 @@ function DailyRecords({ db }) {
                 }
                 setInputValue('');
                 setSelectedCurency('');
+                onClose();
+                setIsSuccessPopupOpen('true');
+                setTimeout(() => {
+                    setIsSuccessPopupOpen(false);
+                }, 3000);
             } catch(error) {
                 console.log('Ошибка обновления данных:', error);
             }
@@ -141,6 +146,11 @@ function DailyRecords({ db }) {
                 }
                 setInputValue('');
                 setSelectedCurency('');
+                onClose();
+                setIsSuccessPopupOpen('true');
+                setTimeout(() => {
+                    setIsSuccessPopupOpen(false);
+                }, 2000);
             } catch(error) {
                 console.log('Ошибка обновления данных:', error);
             }

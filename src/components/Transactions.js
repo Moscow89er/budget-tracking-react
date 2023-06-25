@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TransactionContainer from "./TransactionContainer";
 import TransactionsPopup from "./TransactionsPopup";
 
-function Transactions({ db, rubToUsd, rubToGel }) {
+function Transactions({ db, rubToUsd, rubToGel, setIsSuccessPopupOpen }) {
     const [transactions, setTransactions] = useState([]);
     const [transaction, setTransaction] = useState({
         date: '',
@@ -75,6 +75,11 @@ function Transactions({ db, rubToUsd, rubToGel }) {
             // Сортировка массива транзакций по дате
             transactionData.sort((a, b) => new Date(a.date) - new Date(b.date));
             setTransactions(transactionData);
+            onClose();
+            setIsSuccessPopupOpen('true');
+                setTimeout(() => {
+                    setIsSuccessPopupOpen(false);
+                }, 3000);
         } catch (error) {
             console.log('Ошибка сохранения транзации', error);
         }

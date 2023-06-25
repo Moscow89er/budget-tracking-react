@@ -59,3 +59,6 @@
 @import url(./blocks/transactions_popup/__button/transactions_popup__button.css);
 @import url(./blocks/transactions/__button/transactions__button.css);
 @import url(./blocks/transactions_popup/__close-button/transactions_popup__close-button.css);
+@import url(./blocks/success_popup/__container/success_popup__container.css);
+@import url(./blocks/success_popup/__title/success_popup__title.css);
+@import url(./blocks/success_popup/success_popup.css);
