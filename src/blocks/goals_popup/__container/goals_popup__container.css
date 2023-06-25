@@ -1,6 +1,6 @@
 .goals_popup__container {
     margin: auto;
-    max-width: 358px;
+    width: 300px;
     background: #fff;
     border-radius: 10px;
     color: #000;
