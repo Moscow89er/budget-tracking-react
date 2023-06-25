@@ -1,10 +1,12 @@
 .goal-container {
     margin: 10px auto;
     width: auto;
+    height: 100px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     background-color: rgba(11, 156, 49, 0.6);
     color: #000;
     border-radius: 5px;
     border: 1px solid #000000;
+    
 }

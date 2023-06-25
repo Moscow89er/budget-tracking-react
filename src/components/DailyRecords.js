@@ -14,7 +14,7 @@ function DailyRecords({ db }) {
     const gelToUsd = 0.31; //курс лари к доллару на 23.06.2023
     const chartRef = useRef(null);
     const myChartRef = useRef(null);
-    const [isDailyRecordsPopupOpen, setIsDailyRecordsPopupOpen] = useState(true);
+    const [isDailyRecordsPopupOpen, setIsDailyRecordsPopupOpen] = useState(false);
 
     const onClose = () => {
         setIsDailyRecordsPopupOpen(false);

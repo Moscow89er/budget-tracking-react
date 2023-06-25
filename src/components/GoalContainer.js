@@ -10,7 +10,7 @@ function GoalContainer ({ goal, onDelete }) {
                 <div className="goal-container__paragraph">Сумма: {goal.amount} {goal.currency}</div>
                 <div className="goal-container__paragraph">Дедлайн: {goal.deadline}</div>
             </div>
-            <button className="goal-container__delete-button" onClick={handleDeleteClick}>x</button>
+            <button className="goal-container__delete-button" onClick={handleDeleteClick}></button>
         </div>
     )
 }

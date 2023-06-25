@@ -12,3 +12,7 @@
     opacity: 0;
     transition: all 0.3s linear;
 }
+.daily_records_popup_opened {
+    visibility: visible;
+    opacity: 1;
+}
