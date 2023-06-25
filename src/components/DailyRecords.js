@@ -38,7 +38,7 @@ function DailyRecords({ db, setIsSuccessPopupOpen }) {
               datasets: [
                 {
                   label: 'Баланс',
-                  data: [rub*rubToUsd, usd, gel*gelToUsd],
+                  data: (rub === 0 && usd === 0 && gel === 0) ? [1, 1, 1] : [rub*rubToUsd, usd, gel*gelToUsd],
                   backgroundColor: [
                     'rgba(211, 189, 253, 0.6)',
                     'rgba(11, 156, 49, 0.5)',
@@ -55,6 +55,7 @@ function DailyRecords({ db, setIsSuccessPopupOpen }) {
             },
             options: {
               responsive: true,
+              animation: false,
             },
           });
 

@@ -28,7 +28,7 @@ function Transactions({ db, rubToUsd, rubToGel, setIsSuccessPopupOpen }) {
             try {
                 const transactionData = await db.getAllData('transactions');
                 // Сортировка массива транзакций по дате
-                transactionData.sort((a, b) => new Date(a.date) - new Date(b.date));
+                transactionData.sort((a, b) => new Date(b.date) - new Date(a.date));
                 setTransactions(transactionData);
             } catch (error) {
                 console.log('Ошибка получения данных', error);
@@ -73,7 +73,7 @@ function Transactions({ db, rubToUsd, rubToGel, setIsSuccessPopupOpen }) {
             await db.addData('transactions', transaction);
             const transactionData = await db.getAllData('transactions');
             // Сортировка массива транзакций по дате
-            transactionData.sort((a, b) => new Date(a.date) - new Date(b.date));
+            transactionData.sort((a, b) => new Date(b.date) - new Date(a.date));
             setTransactions(transactionData);
             onClose();
             setIsSuccessPopupOpen('true');
