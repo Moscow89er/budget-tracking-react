@@ -1,0 +1,16 @@
+.transactions_popup__close-button {
+    position: absolute;
+        top: -38px;
+        right: 0px;
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-image: url(../../../images/close-button.svg);
+    background-size: 32px 32px;
+}
+.transactions_popup__close-button:hover {
+    transition: 1s linear 0.05s;
+    opacity: 0.6;
+    cursor: pointer;
+}

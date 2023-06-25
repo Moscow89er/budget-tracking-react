@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import TransactionContainer from "./TransactionContainer";
+import TransactionsPopup from "./TransactionsPopup";
 
 function Transactions({ db, rubToUsd, rubToGel }) {
     const [transactions, setTransactions] = useState([]);
@@ -11,6 +12,15 @@ function Transactions({ db, rubToUsd, rubToGel }) {
         currencyForeign: '',
         amountLocal: ''
     });
+    const [isGoalsPopupOpen, setTransactionsPopupOpen] = useState(false);
+
+    const onClose = () => {
+        setTransactionsPopupOpen(false);
+    }
+
+    const handleOpenPopup = () => {
+        setTransactionsPopupOpen(true);
+    }
 
     // Инициализируем IndexedDB при загрузке компонента
     useEffect(() => {
@@ -81,34 +91,21 @@ function Transactions({ db, rubToUsd, rubToGel }) {
 
     return (
       <section className="transactions">
-        <div>
-            <div className="transactions__title">Транзакции:</div>
-            <div className="transactions__container">
-                {transactions.map((transaction, index) => (
-                    <TransactionContainer key={index} transaction={transaction} />
-                ))}
-            </div>
-            </div>
-            <div className="transactions__add-form__container">
-                <h3 className="transactions__add-form__title">Добавить транзакцию</h3>
-                <form className="transactions__add-form" onSubmit={handleSubmit}>
-                    <label htmlFor="date">Дата:</label>
-                    <input className="transactions__add-form__input-date" id="date" type="date" required value={transaction.date} onChange={handleInputChange} />
-                    <label htmlFor="category">Категория:</label>
-                    <input className="transactions__add-form__input-category" id="category" type="text" required value={transaction.category} onChange={handleInputChange} />
-                    <label htmlFor="location">Место:</label>
-                    <input className="transactions__add-form__input-location" id="location" type="text" required value={transaction.location} onChange={handleInputChange} />
-                    <label htmlFor="amountForeign">Сумма</label>
-                    <input className="transactions__add-form__input-foreign" id="amountForeign" type="number" min="0" step="0.01" required value={transaction.amountForeign} onChange={handleInputChange} />
-                    <label htmlFor="currencyForeign">Валюта:</label>
-                    <select className="transactions__add-form__currency-foreign" id="currencyForeign" required value={transaction.currencyForeign} onChange={handleInputChange}>
-                        <option value="">Выберите валюту</option>
-                        <option value="RUB">RUB</option>
-                        <option value="GEL">GEL</option>
-                        <option value="USD">USD</option>
-                    </select>
-                    <button className="transactions__add-form__button" type="submit">Добавить транзакцию</button>
-                </form>
+            <div>
+                <div className="transactions__title">Транзакции:</div>
+                <div className="transactions__container">
+                    {transactions.map((transaction, index) => (
+                        <TransactionContainer key={index} transaction={transaction} />
+                    ))}
+                </div>
+                <button className="transactions__button" type="button" onClick={handleOpenPopup} >Добавить транзакцию</button>
+                <TransactionsPopup
+                    isOpen={isGoalsPopupOpen}
+                    transaction={transaction}
+                    handleInputChange={handleInputChange}
+                    handleSubmit={handleSubmit}
+                    onClose={onClose}
+                />
             </div>
       </section>
     );

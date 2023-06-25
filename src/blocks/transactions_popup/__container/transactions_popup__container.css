@@ -1,0 +1,9 @@
+.transactions_popup__container {
+    margin: auto;
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    color: #000;
+    padding: 10px;
+    position: sticky;
+}
