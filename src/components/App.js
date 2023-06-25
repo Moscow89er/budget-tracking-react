@@ -27,8 +27,8 @@ function App() {
           <Route path='/goals' element={<Goals db={db} setIsSuccessPopupOpen={setIsSuccessPopupOpen} />} />
           <Route path='/transactions' element={
             <>
-              <Transactions db={db} rubToUsd={rubToUsd} rubToGel={rubToGel} setIsSuccessPopupOpen={setIsSuccessPopupOpen} />
               <ExchangeRate rubToUsd={rubToUsd} rubToGel={rubToGel} />
+              <Transactions db={db} rubToUsd={rubToUsd} rubToGel={rubToGel} setIsSuccessPopupOpen={setIsSuccessPopupOpen} />
             </>
             } 
           />
