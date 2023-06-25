@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/budget-tracking-react/static/css/main.21fca93b.css",
-    "main.js": "/budget-tracking-react/static/js/main.ce4f1353.js",
+    "main.css": "/budget-tracking-react/static/css/main.cbd575cf.css",
+    "main.js": "/budget-tracking-react/static/js/main.f2bd3fdb.js",
     "static/media/trash-icon.svg": "/budget-tracking-react/static/media/trash-icon.ce3b64935accf9b8212e.svg",
     "index.html": "/budget-tracking-react/index.html",
     "static/media/close-button.svg": "/budget-tracking-react/static/media/close-button.039f1f5203f653b4bacd.svg",
-    "main.21fca93b.css.map": "/budget-tracking-react/static/css/main.21fca93b.css.map",
-    "main.ce4f1353.js.map": "/budget-tracking-react/static/js/main.ce4f1353.js.map"
+    "main.cbd575cf.css.map": "/budget-tracking-react/static/css/main.cbd575cf.css.map",
+    "main.f2bd3fdb.js.map": "/budget-tracking-react/static/js/main.f2bd3fdb.js.map"
   },
   "entrypoints": [
-    "static/css/main.21fca93b.css",
-    "static/js/main.ce4f1353.js"
+    "static/css/main.cbd575cf.css",
+    "static/js/main.f2bd3fdb.js"
   ]
 }
