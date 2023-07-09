@@ -13,8 +13,8 @@ import SuccessPopup from "./SuccessPopup";
 function App() {
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
 
-  const rubToUsd = 86.90; //курс рубля к доллару на 24.06.2023
-  const rubToGel = 32.84; //курс рубля к лари на 24.06.2023
+  const rubToUsd = 93.14; //курс рубля к доллару на 09.07.2023
+  const rubToGel = 36.12; //курс рубля к лари на 09.07.2023
 
   const db = new IndexedDB('BudgetTrackingDB');
 
