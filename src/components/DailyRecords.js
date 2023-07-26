@@ -54,13 +54,14 @@ function DailyRecords({ db, setIsSuccessPopupOpen }) {
               ],
             },
             options: {
-              responsive: true,
-              animation: false,
+              responsive: true, // диаграмма автоматически перересовывается для корректного отображения в соответсвии с размером экрана
+              animation: false, // диаграмма появится в целиком отресованном виде без анимации перехода
             },
           });
 
         const fetchData = async () => {
             try {
+                // получение данных из БД
                 const data = await db.getAllData('dailyRecords');
                 if (data.length > 0) {
                     setRub(data[0].rub);
@@ -75,7 +76,8 @@ function DailyRecords({ db, setIsSuccessPopupOpen }) {
         };
 
         fetchData();
-          
+        
+        // удаляем диаграмму после размонтирования компонента
         return () => {
             myChartRef.current.destroy();
         };
@@ -151,7 +153,7 @@ function DailyRecords({ db, setIsSuccessPopupOpen }) {
                 setIsSuccessPopupOpen('true');
                 setTimeout(() => {
                     setIsSuccessPopupOpen(false);
-                }, 2000);
+                }, 3000);
             } catch(error) {
                 console.log('Ошибка обновления данных:', error);
             }
